@@ -2,12 +2,16 @@ import React, { useState } from "react";
 
 function NewTaskForm({ onTaskFormSubmit, categories }) {
   const [text, setText] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(categories[0] || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTask = { text, category };
-    onTaskFormSubmit(newTask); 
+    if ({text} && {category}) {
+      const newTask = { text, category };
+      onTaskFormSubmit(newTask);
+      setText("");
+      setCategory(categories[0] || ""); 
+    }
   };
 
   return (
@@ -35,7 +39,7 @@ function NewTaskForm({ onTaskFormSubmit, categories }) {
           ))}
         </select>
       </label>
-      <input type="submit" value="Add task" />
+      <input type="submit" value="Add task"/>
     </form>
   );
 }

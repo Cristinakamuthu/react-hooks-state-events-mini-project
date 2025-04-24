@@ -9,6 +9,7 @@ function TaskList({ categories, tasks, deleteTask }) {
           key={index}
           text={task.text}
           categorize={task.category}
+          category ={categories}
           onDeleteHandle={() => deleteTask(index)}
         />
       ))}

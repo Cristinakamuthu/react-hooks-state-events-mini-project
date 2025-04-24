@@ -5,13 +5,15 @@ function CategoryFilter({ categories, onCategoryChange }) {
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-    onCategoryChange(category); 
+    onCategoryChange(category);
   };
+
+  const allCategories = ["All", ...categories.filter(cat => cat !== "All")];
 
   return (
     <div className="categories">
       <h4>Category filters</h4>
-      {categories.map((category) => (
+      {allCategories.map((category) => (
         <button
           key={category}
           className={category === selectedCategory ? "selected" : ""}
@@ -20,13 +22,6 @@ function CategoryFilter({ categories, onCategoryChange }) {
           {category}
         </button>
       ))}
-      <button
-        key="All"
-        className={selectedCategory === "All" ? "selected" : ""}
-        onClick={() => handleCategoryClick("All")}
-      >
-        All
-      </button>
     </div>
   );
 }
